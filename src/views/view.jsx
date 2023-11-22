@@ -39,10 +39,9 @@ export default function View() {
               ¿Tienes una solicitud o reclamo?
             </Card.Title>
             <Card.Text className="type24">
-              Queremos ayudarte en lo que nos sea posible, por favor complete la
-              siguiente información.
+              Queremos ayudarte en lo que sea posible
             </Card.Text>
-            <Card.Title className="type32">
+            <Card.Title className="type28">
               Por favor, seleccione el motivo del contacto
             </Card.Title>
           </Card.Header>
