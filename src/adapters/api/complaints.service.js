@@ -21,7 +21,16 @@ class ComplaintsServices {
 
     async updateComplaintStatus(idReclamo, estado) {
         try {
-            const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/complaints/${idReclamo}`, {estado});
+            const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/complaints/updateStatus/${idReclamo}`, { estado });
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    async createComplaint(complaint) {
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/complaints/new-complaint`, complaint);
             return response.data;
         } catch (error) {
             console.error(error);
@@ -29,3 +38,6 @@ class ComplaintsServices {
     }
 
 }
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default new ComplaintsServices();
