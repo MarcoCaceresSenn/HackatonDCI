@@ -5,6 +5,7 @@ import RequestsView from '../../views/requests/requests-form.jsx'
 import RequestsConfirmView from '../../views/requests/requests-confirmation.jsx'
 import ComplainView from '../../views/complain/complain.jsx'
 import FunctionaryView from '../../views/functionary-views/functionary-view-main.jsx'
+import ComplainConfirmView from '../../views/complain/complain-confirmation.jsx'
 
 export default function AppRoutes() {
     return (
@@ -13,8 +14,9 @@ export default function AppRoutes() {
                 <Route path="/" element={<View/>} />
                 <Route path="/solicitud" element={<RequestsView/>}></Route>
                 <Route path="/reclamo" element={<ComplainView/>}></Route>
-                <Route path="/funcionario" element={<FunctionaryView/>}></Route>
+                <Route path="/funcionario-reclamos" element={<FunctionaryView/>}></Route>
                 <Route path="/confirmacion-solicitud" element={<RequestsConfirmView/>} />
+                <Route path="/confirmacion-reclamo" element={<ComplainConfirmView/>} />
             </Routes>
         </Router>
     );

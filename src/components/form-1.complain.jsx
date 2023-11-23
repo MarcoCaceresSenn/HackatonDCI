@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Form1Requests() {
     const navigate = useNavigate();
     const [rut, setRut] = useState('');
-    const [solicitud, setSolicitud] = useState('');
+    const [complaint, setComplaint] = useState('');
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
 
@@ -16,8 +16,8 @@ export default function Form1Requests() {
         setRut(e.target.value);
     };
 
-    const handleSolicitudChange = (e) => {
-        setSolicitud(e.target.value);
+    const handleComplaintChange = (e) => {
+        setComplaint(e.target.value);
     };
 
     const handleCategoryChange = (e) => {
@@ -33,9 +33,9 @@ export default function Form1Requests() {
 
     const handleContinue = (event) => {
         event.preventDefault();
-        console.log("COMPLAINTS:","EL RUT:", rut,"LA SOLI: ", solicitud,"LA CATEGORY: ", category,"LA SUBCA:", subCategory);
-        navigate('/confirm-complaint', {
-            state: { rut, solicitud, category, subCategory }
+        console.log("COMPLAINTS:","EL RUT:", rut,"LA queja: ", complaint,"LA CATEGORY: ", category,"LA SUBCA:", subCategory);
+        navigate('/confirmacion-reclamo', {
+            state: { rut, complaint, category, subCategory }
         })
     }
 
@@ -53,7 +53,7 @@ export default function Form1Requests() {
                     </Form.Group>
                     <Form.Group className="margin-rut mb-2" controlId="rut">
                         <Form.Label className='custom-label'>Describanos un poco su problema:</Form.Label>
-                        <Form.Control className='input-asunto' type="text" maxLength={40} placeholder="ej: Calle en mal estado" onChange={handleSolicitudChange} />
+                        <Form.Control className='input-asunto' type="text" maxLength={40} placeholder="ej: Calle en mal estado" onChange={handleComplaintChange} />
                     </Form.Group>
                     <div className='d-flex justify-content-center select-container gap-5 little-top'>
                         <Form.Group className="mt-5" controlId="category">

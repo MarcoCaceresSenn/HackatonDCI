@@ -35,3 +35,14 @@ h2 {
     align-items: center;
     justify-content: center;
 }
+
+.custom-back{
+    border: none;
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
+}
+.custom-back:hover{
+    background-color: transparent;
+    color: black;
+}
