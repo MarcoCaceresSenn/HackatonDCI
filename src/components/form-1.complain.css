@@ -1,10 +1,10 @@
 .form-container {
   border-radius: 20px;
-  width: 90%;
+  width: 80%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  margin-left: 5%;
+  margin-left: 10%;
   height: 75vh;
   box-shadow: 0 2px 15px #004365;
 }
@@ -19,7 +19,7 @@
 }
 
 .margin-rut {
-  margin-left: 32.7%;
+  margin-left: 29.8%;
 }
 
 /* Ajusta el tamaño de los Form.Select según sea necesario */
@@ -36,12 +36,12 @@
   font-size: 20px;
 }
 
-.custom-form-button {
+.custom-complaint-button {
   border: none;
   border-radius: 25px;
   width: 15%;
   height: 7vh;
-  background-color: #00afec;
+  background-color: #00c6c5;
   font-size: 20px;
   display: block;
   margin: auto;

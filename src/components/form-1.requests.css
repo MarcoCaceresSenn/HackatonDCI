@@ -19,7 +19,7 @@
   }
 
 .margin-rut {
-    margin-left: 32.7%;
+    margin-left: 30%;
 }
   
   /* Ajusta el tamaño de los Form.Select según sea necesario */
@@ -36,7 +36,7 @@
     font-size: 20px;
 }
 
-.custom-form-button {
+.custom-request-button {
     border: none;
     border-radius: 25px;
     width: 15%;

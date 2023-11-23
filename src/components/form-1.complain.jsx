@@ -6,9 +6,19 @@ import "./form-1.complain.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Form1Requests() {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
+    const [rut, setRut] = useState('');
+    const [solicitud, setSolicitud] = useState('');
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
+
+    const handleRutChange = (e) => {
+        setRut(e.target.value);
+    };
+
+    const handleSolicitudChange = (e) => {
+        setSolicitud(e.target.value);
+    };
 
     const handleCategoryChange = (e) => {
         const selectedCategory = e.target.value;
@@ -21,8 +31,12 @@ export default function Form1Requests() {
         setSubCategory(selectedSubCategory);
     };
 
-    const handleContinue = () =>{
-        navigate('/next-complain')
+    const handleContinue = (event) => {
+        event.preventDefault();
+        console.log("COMPLAINTS:","EL RUT:", rut,"LA SOLI: ", solicitud,"LA CATEGORY: ", category,"LA SUBCA:", subCategory);
+        navigate('/confirm-complaint', {
+            state: { rut, solicitud, category, subCategory }
+        })
     }
 
     return (
@@ -35,11 +49,11 @@ export default function Form1Requests() {
                 <div>
                     <Form.Group className="margin-rut mb-2" controlId="rut">
                         <Form.Label className='custom-label'>Ingrese su rut:</Form.Label>
-                        <Form.Control className='input rut' type="text" maxLength={12} placeholder="ej: 12.123.123-1" />
+                        <Form.Control className='input rut' type="text" maxLength={12} placeholder="ej: 12.123.123-1" onChange={handleRutChange} />
                     </Form.Group>
                     <Form.Group className="margin-rut mb-2" controlId="rut">
                         <Form.Label className='custom-label'>Describanos un poco su problema:</Form.Label>
-                        <Form.Control className='input-asunto' type="text" maxLength={40} placeholder="ej: Calle en mal estado" />
+                        <Form.Control className='input-asunto' type="text" maxLength={40} placeholder="ej: Calle en mal estado" onChange={handleSolicitudChange} />
                     </Form.Group>
                     <div className='d-flex justify-content-center select-container gap-5 little-top'>
                         <Form.Group className="mt-5" controlId="category">
@@ -62,7 +76,7 @@ export default function Form1Requests() {
                     </div>
                 </div>
 
-                <Button className='custom-form-button' type="submit" onClick={handleContinue}>
+                <Button className='custom-complaint-button' type="submit" onClick={handleContinue}>
                     Confirmar <SendFill />
                 </Button>
             </Form>
