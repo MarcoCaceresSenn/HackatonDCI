@@ -9,7 +9,7 @@ import FormControl from "react-bootstrap/FormControl";
 import RequestsServices from "../../adapters/api/requests.services";
 import "./show-detail.css";
 
-export default function ShowDetailReq() {
+export default function ShowDetailCom() {
   const { state } = useLocation();
   const rut = state?.rut;
   const solicitud = state?.solicitud;
