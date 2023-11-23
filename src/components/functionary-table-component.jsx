@@ -45,7 +45,7 @@ export default function CustomTable() {
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
             </div>
-            <Table bordered hover responsive="sm" className="rounded">
+            <Table bordered hover responsive="sm" className="rounded mt-3">
                 <thead>
                 <tr>
                         <th>Descripción</th>
