@@ -2,14 +2,18 @@ import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./view-css.css";
-import LogoTraiguen from "../assets/Logo-traiguen-Celeste-1024x411_1.png";
-import LogoMarcas from "../assets/Logos-marcas.png";
+import LogoTraiguen from "../../assets/Logo-traiguen-Celeste-1024x411_1.png";
+import LogoMarcas from "../../assets/Logos-marcas.png";
 import { useNavigate } from "react-router-dom";
 
 export default function View() {
   const navigate = useNavigate();
   const handleRequests = () => {
     navigate('/solicitud');
+  }
+
+  const handleComplains = () => {
+    navigate('/reclamo');
   }
 
   return (
@@ -59,7 +63,7 @@ export default function View() {
               </Button>
             </div>
             <div>
-              <Button variant="Light type40 button-600x120 button-sea shadow">
+              <Button variant="Light type40 button-600x120 button-sea shadow" onClick={handleComplains}>
                 RECLAMO
               </Button>
             </div>

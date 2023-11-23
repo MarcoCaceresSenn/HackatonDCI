@@ -1,0 +1,48 @@
+.form-container {
+  border-radius: 20px;
+  width: 90%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  height: 75vh;
+  box-shadow: 0 2px 15px #004365;
+}
+
+.input {
+  height: 6vh;
+  border: 2px solid rgba(0, 175, 236, 0.7);
+}
+.select-container {
+  display: flex;
+  justify-content: center;
+}
+
+.margin-rut {
+  margin-left: 32.7%;
+}
+
+/* Ajusta el tamaño de los Form.Select según sea necesario */
+.select-container .input {
+  width: 250px; /* O el ancho deseado */
+  margin-right: 10px; /* O el margen derecho deseado entre los selects */
+}
+
+.rut {
+  width: 25%;
+}
+
+.custom-label {
+  font-size: 20px;
+}
+
+.custom-form-button {
+  border: none;
+  border-radius: 25px;
+  width: 15%;
+  height: 7vh;
+  background-color: #00afec;
+  font-size: 20px;
+  display: block;
+  margin: auto;
+}
