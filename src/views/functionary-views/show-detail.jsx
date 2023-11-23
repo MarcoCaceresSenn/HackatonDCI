@@ -8,6 +8,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import "./show-detail.css";
 import complaintsService from '../../adapters/api/complaints.service';
+import requestsServices from '../../adapters/api/requests.services';
 
 export default function ShowDetail() {
 
@@ -18,7 +19,7 @@ export default function ShowDetail() {
   useEffect(() => {
     async function fetchRequest() {
             console.log("Entró a la funcion")
-            const requestData = await complaintsService.getComplaintById(id);
+            const requestData = await requestsServices.getRequestById(id);
             setRequest(requestData || []);
             console.log("request",requestData);
         
@@ -46,7 +47,7 @@ export default function ShowDetail() {
 
   const handleChangeStatus = async () => {
     try {
-      await complaintsService.updateComplaintStatus(id,selectedStatus);
+      await requestsServices.updateRequestStatus(id,selectedStatus);
       console.log(`Estado cambiado a: ${selectedStatus}`);
       // Puedes realizar alguna acción adicional después de cambiar el estado
     } catch (error) {

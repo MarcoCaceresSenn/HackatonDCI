@@ -22,9 +22,9 @@ class RequestsServices {
         }
     }
 
-    async updateRequestStatus(idSolicitud, estado) {
+    async updateRequestStatus(idSolicitud, status) {
         try {
-            const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/requests/updateStatus/${idSolicitud}`, { estado });
+            const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/requests/updateStatus/${idSolicitud}`, { status });
             return response.data;
         } catch (error) {
             console.error(error);

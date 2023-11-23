@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import NavBar from "../../components/navbar.component";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { ArrowClockwise } from "react-bootstrap-icons";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import RequestsServices from "../../adapters/api/requests.services";
 import "./show-detail.css";
+import complaintsService from '../../adapters/api/complaints.service';
 
-export default function ShowDetailCom() {
-  const { state } = useLocation();
-  const rut = state?.rut;
-  const solicitud = state?.solicitud;
-  const category = state?.category;
-  const subCategory = state?.subCategory;
+export default function ShowDetail() {
+
+  const { id } = useParams();
+
+  const [request, setRequest] = useState([]);
+
+  useEffect(() => {
+    async function fetchRequest() {
+            console.log("Entró a la funcion")
+            const requestData = await complaintsService.getComplaintById(id);
+            setRequest(requestData || []);
+            console.log("request",requestData);
+        
+    }
+
+    fetchRequest();
+}, []);
+
 
   const [selectedStatus, setSelectedStatus] = useState("Pendiente");
 
@@ -32,29 +44,16 @@ export default function ShowDetailCom() {
     console.log("Volver a la solicitud anterior");
   };
 
-  const handleChangeStatus = () => {
-    // Lógica para cambiar el estado de la solicitud
-    console.log("Cambiar estado a:", selectedStatus);
-  };
-
-  const handleRequests = async (event) => {
-    event.preventDefault();
-    console.log("ELuser:", user);
-    const response = await RequestsServices.createRequest(user);
-    console.log(response);
-    if (response.status === 200) {
-      alert("Solicitud enviada correctamente");
-      window.location.href = "/";
-    } else {
-      alert("Error al enviar la solicitud");
+  const handleChangeStatus = async () => {
+    try {
+      await complaintsService.updateComplaintStatus(id,selectedStatus);
+      console.log(`Estado cambiado a: ${selectedStatus}`);
+      // Puedes realizar alguna acción adicional después de cambiar el estado
+    } catch (error) {
+      console.error('Error al cambiar el estado:', error);
+      // Puedes manejar el error de alguna manera
     }
-  };
-
-  const user = {
-    rut: rut,
-    description: solicitud,
-    category: category,
-    subcategory: subCategory,
+    
   };
 
   return (
@@ -64,19 +63,21 @@ export default function ShowDetailCom() {
         <div className="custom-width d-flex justify-content-between">
           <div>
             <h2>Rut:</h2>
-            <h2>Teléfono:</h2>
+            {request.userPhone && <h2>Teléfono:</h2>}
             <h2>Tipo:</h2>
             <h2>Descripción:</h2>
             <h2>Categoría:</h2>
             <h2>Subcategoría:</h2>
+            <h2>Estado:</h2>
           </div>
           <div>
-            <h2>{rut}</h2>
-            <h2>9 88888821</h2>
+            <h2>{request.userRut}</h2>
+            {request.userPhone && <h2>{request.userPhone}</h2>}
             <h2>Solicitud</h2>
-            <h2>{solicitud}</h2>
-            <h2>{category}</h2>
-            <h2>{subCategory}</h2>
+            <h2>{request.description}</h2>
+            <h2>{request.category}</h2>
+            <h2>{request.subcategory}</h2>
+            <h2>{request.status}</h2>
           </div>
         </div>
         <Form>

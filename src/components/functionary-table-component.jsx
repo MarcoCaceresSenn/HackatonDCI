@@ -47,6 +47,7 @@ export default function CustomTable() {
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
             </div>
+            <h1 className='mt-2' >Reclamos</h1>
             <Table bordered hover responsive="sm" className="rounded mt-3">
                 <thead>
                 <tr>
@@ -70,7 +71,7 @@ export default function CustomTable() {
                                    {complaint.userRut}
                                 </td>
                                 <td>
-                                <Link to={`/detail/${complaint._id}`}>Detalle</Link>
+                                <Link to={`/detail-reclamo/${complaint._id}`}>Detalle</Link>
                                 </td>
                             </tr>
                         ))

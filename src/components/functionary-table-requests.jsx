@@ -3,6 +3,8 @@ import Table from 'react-bootstrap/Table';
 import RequestsServices from '../adapters/api/requests.services';
 import './functionary-table-component.css';
 import { SortUp } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
+
 
 export default function CustomTable() {
     const [requests, setRequests] = useState([]);
@@ -39,12 +41,14 @@ export default function CustomTable() {
             <div>
                 <label htmlFor="searchInput">Buscar en la tabla: </label>
                 <input
+                    
                     type="text"
                     id="searchInput"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
             </div>
+            <h1 className='mt-2' >Solicitudes</h1>
             <Table bordered hover responsive="sm" className="rounded mt-3">
                 <thead>
                 <tr>
@@ -68,7 +72,7 @@ export default function CustomTable() {
                                    {request.userRut}
                                 </td>
                                 <td>
-                                   <a href="#" >Detalle</a>
+                                <Link to={`/detail-solicitud/${request._id}`}>Detalle</Link>
                                 </td>
                             </tr>
                         ))
