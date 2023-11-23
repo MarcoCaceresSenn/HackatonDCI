@@ -2,9 +2,14 @@ import axios from 'axios';
 
 class ComplaintsServices {
     async getComplaints() {
+        console.log("Llegó al servicio");
+        console.log(process.env.REACT_APP_BASE_URL);
         try {
+            console.log("Entró al try del servicio")
             const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/complaints/all`);
-            return response.data;
+            console.log("hola");
+            console.log(response.data);
+            return response.data.complaints;
         } catch (error) {
             console.error(error);
         }
