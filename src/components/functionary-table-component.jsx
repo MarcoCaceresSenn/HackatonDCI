@@ -2,26 +2,52 @@ import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import ComplaintsServices from '../adapters/api/complaints.service';
 import './functionary-table-component.css';
+import { SortUp } from 'react-bootstrap-icons';
 
 export default function CustomTable() {
     const [complaints, setComplaints] = useState([]);
+    const [filteredComplaints, setFilteredComplaints] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         async function fetchComplaints() {
+            try {
                 const complaintsData = await ComplaintsServices.getComplaints();
-                console.log("Complaints data")
-                console.log(complaintsData)
-                setComplaints(complaintsData);
+                setComplaints(complaintsData || []);
+                console.log("complaints",complaintsData);
+            } catch (error) {
+                console.error(error);
+                setComplaints([]);
+            }
         }
+
         fetchComplaints();
-        console.log(complaints);
     }, []);
-    
+
+    useEffect(() => {
+        // Filtrar los reclamos basados en la entrada del usuario
+        const filtered = complaints.filter((complaint) =>
+            Object.values(complaint).some((value) =>
+                value.toString().toLowerCase().includes(searchInput.toLowerCase())
+            )
+        );
+        setFilteredComplaints(filtered);
+    }, [complaints, searchInput]);
+
     return (
         <div className="table-container mx-auto mt-4 p-4">
-            <Table bordered hover responsive="sm" className="rounded">
+            <div>
+                <label htmlFor="searchInput">Buscar en la tabla: </label>
+                <input
+                    type="text"
+                    id="searchInput"
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                />
+            </div>
+            <Table bordered hover responsive="sm" className="rounded mt-3">
                 <thead>
-                    <tr>
+                <tr>
                         <th>Descripción</th>
                         <th>Categoría</th>
                         <th>Subcategoría</th>
@@ -31,8 +57,8 @@ export default function CustomTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {complaints && complaints.length > 0 ? (
-                        complaints.map((complaint) => (
+                    {filteredComplaints.length > 0 ? (
+                        filteredComplaints.map((complaint) => (
                             <tr key={complaint._id}>
                                 <td>{complaint.description}</td>
                                 <td>{complaint.category}</td>
