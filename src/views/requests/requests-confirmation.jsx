@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { SendFill } from 'react-bootstrap-icons';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState } from "react";
+import RequestsServices from "../../adapters/api/requests.services";
 
 
 
@@ -20,6 +21,23 @@ export default function RequestsConfirmationForm() {
     const handlePhoneChange = (e) => {
         setPhone(e.target.value);
         console.log(phone)
+    }
+
+    const backToRequests = () => {
+        window.history.back();
+    }
+    const handleRequests = async (event) => {
+        event.preventDefault();
+        console.log("ELuser:", user);
+        const response = await RequestsServices.createRequest(user);
+        console.log(response);
+        if (response.status === 200) {
+            alert("Solicitud enviada correctamente");
+            window.location.href = "/";
+        } else {
+            alert("Error al enviar la solicitud");
+        }
+
     }
 
     const user = {
@@ -67,12 +85,17 @@ export default function RequestsConfirmationForm() {
                             onChange={handlePhoneChange}
                         />
                     </InputGroup>
-                    <Button
-                        className='custom-confirm-button'
-                        type="submit"
-                    >
-                        Enviar Solicitud <SendFill />
-                    </Button>
+                    <div className="d-flex justify-content-between mt-3">
+                        <Button onClick={backToRequests} className="custom-back" >Volver</Button>
+                        <Button
+                            className='custom-confirm-button'
+                            type="submit"
+                            onClick={handleRequests}
+                        >
+                            Enviar Solicitud <SendFill />
+                        </Button>
+                    </div>
+
                 </Form>
             </div>
         </div>
