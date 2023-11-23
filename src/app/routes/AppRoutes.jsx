@@ -6,7 +6,9 @@ import RequestsConfirmView from '../../views/requests/requests-confirmation.jsx'
 import ComplainView from '../../views/complain/complain.jsx'
 import FunctionaryView from '../../views/functionary-views/functionary-view-main.jsx'
 import ComplainConfirmView from '../../views/complain/complain-confirmation.jsx'
-import ShowDetail from '../../views/functionary-views/show-detail.jsx';
+import ShowDetailReq from '../../views/functionary-views/show-detail.jsx';
+import ShowDetailCom from '../../views/functionary-views/show-detail-complain.jsx';
+import FunctionaryRequests from '../../views/functionary-views/functionary-view-requests.jsx';
 
 export default function AppRoutes() {
     return (
@@ -18,7 +20,10 @@ export default function AppRoutes() {
                 <Route path="/funcionario-reclamos" element={<FunctionaryView/>}></Route>
                 <Route path="/confirmacion-solicitud" element={<RequestsConfirmView/>} />
                 <Route path="/confirmacion-reclamo" element={<ComplainConfirmView/>} />
-                <Route path="/detail/:id" element={<ShowDetail/>} />
+                <Route path="/detail-solicitud/:id" element={<ShowDetailReq/>} />
+                <Route path="/detail-reclamo/:id" element={<ShowDetailCom/>} />
+                <Route path="/funcionario-solicitudes" element={<FunctionaryRequests/>} />
+
             </Routes>
         </Router>
     );
