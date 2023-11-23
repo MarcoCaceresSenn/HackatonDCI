@@ -18,15 +18,15 @@ class ComplaintsServices {
     async getComplaintById(idReclamo) {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/complaints/${idReclamo}`);
-            return response.data;
+            return response.data.selectedComplaint;
         } catch (error) {
             console.error(error);
         }
     }
 
-    async updateComplaintStatus(idReclamo, estado) {
+    async updateComplaintStatus(idReclamo, status) {
         try {
-            const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/complaints/updateStatus/${idReclamo}`, { estado });
+            const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/complaints/updateStatus/${idReclamo}`, { status });
             return response.data;
         } catch (error) {
             console.error(error);

@@ -3,8 +3,10 @@ import Table from 'react-bootstrap/Table';
 import ComplaintsServices from '../adapters/api/complaints.service';
 import './functionary-table-component.css';
 import { SortUp } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 export default function CustomTable() {
+
     const [complaints, setComplaints] = useState([]);
     const [filteredComplaints, setFilteredComplaints] = useState([]);
     const [searchInput, setSearchInput] = useState('');
@@ -68,7 +70,7 @@ export default function CustomTable() {
                                    {complaint.userRut}
                                 </td>
                                 <td>
-                                   <a href="#" >Detalle</a>
+                                <Link to={`/detail/${complaint._id}`}>Detalle</Link>
                                 </td>
                             </tr>
                         ))

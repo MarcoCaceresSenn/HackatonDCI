@@ -18,7 +18,7 @@ export default function AppRoutes() {
                 <Route path="/funcionario-reclamos" element={<FunctionaryView/>}></Route>
                 <Route path="/confirmacion-solicitud" element={<RequestsConfirmView/>} />
                 <Route path="/confirmacion-reclamo" element={<ComplainConfirmView/>} />
-                <Route path="/detail" element={<ShowDetail/>} />
+                <Route path="/detail/:id" element={<ShowDetail/>} />
             </Routes>
         </Router>
     );

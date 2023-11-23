@@ -8,8 +8,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import "./show-detail.css";
 import complaintsService from '../../adapters/api/complaints.service';
+import requestsServices from '../../adapters/api/requests.services';
 
-export default function ShowDetail() {
+export default function ShowDetailRequest() {
 
   const { id } = useParams();
 
@@ -18,7 +19,7 @@ export default function ShowDetail() {
   useEffect(() => {
     async function fetchRequest() {
             console.log("Entró a la funcion")
-            const requestData = await complaintsService.getComplaintById(id);
+            const requestData = await requestsServices.getRequestById(id);
             setRequest(requestData || []);
             console.log("request",requestData);
         

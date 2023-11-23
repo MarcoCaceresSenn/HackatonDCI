@@ -13,8 +13,10 @@ class RequestsServices {
 
     async getRequestById(idSolicitud) {
         try {
+            console.log("Entró al servicio")
             const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/requests/${idSolicitud}`);
-            return response.data;
+            console.log("request",response.data.selectedRequest)
+            return response.data.selectedRequest;
         } catch (error) {
             console.error(error);
         }
