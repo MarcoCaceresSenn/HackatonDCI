@@ -129,3 +129,10 @@ height: 42.2vh;
     border-bottom: #000000 solid 1px;
     padding: 0.5%;
   }
+
+  .functionary-button {
+    position: fixed;
+    margin-left: 83%;
+    margin-top: 1%;
+    padding: 15px;
+  }

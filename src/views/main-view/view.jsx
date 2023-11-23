@@ -16,10 +16,16 @@ export default function View() {
     navigate('/reclamo');
   }
 
+  const handleWorker = () => {
+    navigate('/funcionario-reclamos');
+  }
+
   return (
     <div className="principal-view">
+      <Button className="functionary-button" variant="Light type28 button-blue shadow" onClick={handleWorker}>
+                ¿Eres Funcionario?
+      </Button>
       <img className="imagen" src={LogoTraiguen} alt="" />
-
       <div className="texto-contacto">
         <h4>
           <strong>

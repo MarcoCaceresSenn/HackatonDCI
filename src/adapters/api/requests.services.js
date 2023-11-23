@@ -5,7 +5,7 @@ class RequestsServices {
     async getRequests() {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/requests/all`);
-            return response.data;
+            return response.data.requests;
         } catch (error) {
             console.error(error);
         }
