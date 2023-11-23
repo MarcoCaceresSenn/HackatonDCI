@@ -3,8 +3,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { SendFill } from 'react-bootstrap-icons';
 import "./form-1.complain.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Form1Requests() {
+    const navigate=useNavigate();
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
 
@@ -19,6 +21,10 @@ export default function Form1Requests() {
         setSubCategory(selectedSubCategory);
     };
 
+    const handleContinue = () =>{
+        navigate('/next-complain')
+    }
+
     return (
         <div>
             <Form className='form-container mt-5 p-5'>
@@ -31,7 +37,11 @@ export default function Form1Requests() {
                         <Form.Label className='custom-label'>Ingrese su rut:</Form.Label>
                         <Form.Control className='input rut' type="text" maxLength={12} placeholder="ej: 12.123.123-1" />
                     </Form.Group>
-                    <div className='d-flex justify-content-center select-container gap-5'>
+                    <Form.Group className="margin-rut mb-2" controlId="rut">
+                        <Form.Label className='custom-label'>Describanos un poco su problema:</Form.Label>
+                        <Form.Control className='input-asunto' type="text" maxLength={40} placeholder="ej: Calle en mal estado" />
+                    </Form.Group>
+                    <div className='d-flex justify-content-center select-container gap-5 little-top'>
                         <Form.Group className="mt-5" controlId="category">
                             <Form.Label className='custom-label'>Seleccione la categoría:</Form.Label>
                             <Form.Select className="input rut" aria-label="Default select example" onChange={handleCategoryChange} value={category}>
@@ -52,7 +62,7 @@ export default function Form1Requests() {
                     </div>
                 </div>
 
-                <Button className='custom-form-button' type="submit">
+                <Button className='custom-form-button' type="submit" onClick={handleContinue}>
                     Confirmar <SendFill />
                 </Button>
             </Form>

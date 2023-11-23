@@ -46,3 +46,13 @@
   display: block;
   margin: auto;
 }
+
+.input-asunto {
+  height: 6vh;
+  border: 2px solid rgba(0, 175, 236, 0.7);
+  width: 60%;
+}
+
+.little-top {
+  margin-top: -1.5%;
+}
