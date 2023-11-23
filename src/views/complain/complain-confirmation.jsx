@@ -1,19 +1,19 @@
 import NavBar from "../../components/navbar.component"
 import { useLocation } from "react-router-dom";
-import "./requests-confirmation.css"
+import "../requests/requests-confirmation.css"
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { SendFill } from 'react-bootstrap-icons';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState } from "react";
-import RequestsServices from "../../adapters/api/requests.services";
+import ComplaintsService from "../../adapters/api/complaints.service";
 
 
 
 export default function RequestsConfirmationForm() {
     const { state } = useLocation();
     const rut = state?.rut;
-    const solicitud = state?.solicitud;
+    const reclamo = state?.complaint;
     const category = state?.category;
     const subCategory = state?.subCategory;
     const [phone, setPhone] = useState('');
@@ -21,29 +21,28 @@ export default function RequestsConfirmationForm() {
     const handlePhoneChange = (e) => {
         setPhone(e.target.value);
         console.log(phone)
-        console.log("ELuser:", user);
     }
 
-    const backToRequests = () => {
+    const backToComplaints = () => {
         window.history.back();
     }
-    const handleRequests = async (event) => {
+    const handleComplaints = async (event) => {
         event.preventDefault();
-        console.log("ELuserPOSTBOTON:", user);
-        const response = await RequestsServices.createRequest(user);
-        console.log("RESPONSE DEL BOTON",response);
+        console.log("ELuser:", user);
+        const response = await ComplaintsService.createComplaint(user);
+        console.log(response);
         if (response.status === 200) {
-            alert("Solicitud enviada correctamente");
+            alert("Reclamo enviado correctamente");
             window.location.href = "/";
         } else {
-            alert("Error al enviar la solicitud");
+            alert("Error al enviar su reclamo");
         }
 
     }
 
     const user = {
         "rut": rut,
-        "description": solicitud,
+        "description": reclamo,
         "category": category,
         "subcategory": subCategory,
         "phone": phone
@@ -58,19 +57,19 @@ export default function RequestsConfirmationForm() {
                     <div>
                         <h2>Rut:</h2>
                         <h2>Tipo:</h2>
-                        <h2>Solicitud:</h2>
+                        <h2>Reclamo:</h2>
                         <h2>Categoría:</h2>
                         <h2>Subcategoría:</h2>
                     </div>
                     <div>
                         <h2>{rut}</h2>
-                        <h2>Solicitud</h2>
-                        <h2>{solicitud}</h2>
+                        <h2>Reclamo</h2>
+                        <h2>{reclamo}</h2>
                         <h2>{category}</h2>
                         <h2>{subCategory}</h2>
                     </div>
                 </div>
-                <h3 className="mt-3">Si quiere conocer el estado de su solicitud ingrese su número de celular(opcional):</h3>
+                <h3 className="mt-3">Si quiere conocer el estado de su reclamo ingrese su número de celular(opcional):</h3>
                 <Form>
                     <InputGroup className="mb-2">
                         <InputGroup.Text id="phone-prefix">+569</InputGroup.Text>
@@ -87,13 +86,13 @@ export default function RequestsConfirmationForm() {
                         />
                     </InputGroup>
                     <div className="d-flex justify-content-between mt-3">
-                        <Button onClick={backToRequests} className="custom-back" >Volver</Button>
+                        <Button onClick={backToComplaints} className="custom-back" >Volver</Button>
                         <Button
                             className='custom-confirm-button'
                             type="submit"
-                            onClick={handleRequests}
+                            onClick={handleComplaints}
                         >
-                            Enviar Solicitud <SendFill />
+                            Enviar Reclamo <SendFill />
                         </Button>
                     </div>
 
