@@ -5,7 +5,7 @@ class ComplaintsServices {
         console.log("Llegó al servicio");
         console.log(process.env.REACT_APP_BASE_URL);
         try {
-            console.log("Entró al try del servicio")
+            console.log("Entró a l")
             const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/complaints/all`);
             console.log("hola");
             console.log(response.data);
