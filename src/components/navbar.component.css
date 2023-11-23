@@ -1,0 +1,24 @@
+.image-config {
+    width: 30%;
+}
+
+.nav-size {
+    height: 11vh;
+    
+}
+
+.custom-button {
+    border: none;
+    background-color: transparent;
+    color: black;
+    font-size: 25px;
+}
+
+.custom-button:hover {
+    background-color: transparent;
+    color: black;
+}
+
+.principal {
+    box-shadow: 0 2px 15px #004365;
+}

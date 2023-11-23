@@ -1,0 +1,6 @@
+.general-container {
+    overflow-y: hidden;
+    background: linear-gradient(to bottom, #00c6c5 10%, #4899CF 30%);
+    height: 100vh;
+
+}

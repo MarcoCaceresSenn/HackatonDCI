@@ -4,10 +4,16 @@ import Card from "react-bootstrap/Card";
 import "./view-css.css";
 import LogoTraiguen from "../assets/Logo-traiguen-Celeste-1024x411_1.png";
 import LogoMarcas from "../assets/Logos-marcas.png";
+import { useNavigate } from "react-router-dom";
 
 export default function View() {
+  const navigate = useNavigate();
+  const handleRequests = () => {
+    navigate('/solicitud');
+  }
+
   return (
-    <div>
+    <div className="principal-view">
       <img className="imagen" src={LogoTraiguen} alt="" />
 
       <div className="texto-contacto">
@@ -33,28 +39,27 @@ export default function View() {
       </div>
 
       <div className="card-container">
-        <Card className="text-center mt-4 shadow">
-          <Card.Header>
+        <Card className="text-center size mt-2 radius shadow">
+          <Card.Header className="p-3">
             <Card.Title className="type40">
               ¿Tienes una solicitud o reclamo?
             </Card.Title>
             <Card.Text className="type24">
-              Queremos ayudarte en lo que nos sea posible, por favor complete la
-              siguiente información.
+              Queremos ayudarte en lo que nos sea posible
             </Card.Text>
             <Card.Title className="type32">
               Por favor, seleccione el motivo del contacto
             </Card.Title>
           </Card.Header>
-          <Card.Body>
+          <Card.Body className="m-3">
             <div className="mb-2">
               {" "}
-              <Button variant="Light type40 button-600x120 button-blue">
+              <Button variant="Light type40 button-600x120 button-blue mb-3 shadow" onClick={handleRequests}>
                 SOLICITUD
               </Button>
             </div>
             <div>
-              <Button variant="Light type40 button-600x120 button-sea">
+              <Button variant="Light type40 button-600x120 button-sea shadow">
                 RECLAMO
               </Button>
             </div>

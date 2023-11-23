@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-body {
-font-family: 'Poppins', sans-serif;
+.principal-view {
 background: linear-gradient(to bottom, #00c6c5 10%, #4899CF 30%);
 margin: 0; 
-height: 100vh;
+height: 42.2vh;
 }
 
 .type40 {
@@ -66,11 +65,19 @@ height: 100vh;
 
 .card-container {
     width: 1100px;
-    height: 665px;
     margin-top: -45px;
     margin-left: 55px;
  
   }
+
+.radius {
+  border-radius: 25px 25px 25px 25px;
+}
+
+.size {
+  height: 63vh;
+}
+
 
   body::after {
     content: "";
