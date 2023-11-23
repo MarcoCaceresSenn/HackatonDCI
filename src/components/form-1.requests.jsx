@@ -5,6 +5,7 @@ import { SendFill } from 'react-bootstrap-icons';
 import "./form-1.requests.css";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Form1Requests() {
     const navigate = useNavigate();
     const [rut, setRut] = useState('');
@@ -34,7 +35,7 @@ export default function Form1Requests() {
     const handleContinue = (event) => {
         event.preventDefault();
         console.log("EL RUT:", rut,"LA SOLI: ", solicitud,"LA CATEGORY: ", category,"LA SUBCA:", subCategory);
-        navigate('/confirm-request', {
+        navigate('/confirmacion-solicitud', {
             state: { rut, solicitud, category, subCategory }
         })
     }
@@ -49,7 +50,7 @@ export default function Form1Requests() {
                 <div>
                     <Form.Group className="margin-rut mb-2" controlId="rut">
                         <Form.Label className='custom-label'>Ingrese su rut:</Form.Label>
-                        <Form.Control className='input rut' type="text" maxLength={12} placeholder="ej: 12.123.123-1" onChange={handleRutChange} />
+                        <Form.Control className='input rut' type="text" minLength={11} maxLength={12} placeholder="ej: 12.123.123-1" onChange={handleRutChange} />
                     </Form.Group>
                     <Form.Group className="margin-rut mb-2" controlId="rut">
                         <Form.Label className='custom-label'>Describanos un poco su solicitud(opcional):</Form.Label>
